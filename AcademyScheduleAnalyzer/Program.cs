@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Net.Security;
 using System.Text;
 
 
@@ -409,3 +410,169 @@ static string BuildReportUsingStringBuilder(
 
     return report.ToString();
 }
+
+
+/*Part 7 — ref, out, and Reference-Type Parameters*/
+//7.1 ref
+static void ChangeValue(ref int number)
+{
+    number = 100;
+}
+
+int number = 50;
+Console.WriteLine($"before calling method:{number}");
+ChangeValue(ref number);
+Console.WriteLine($"after calling method::{number}");
+
+//7.2 out
+static bool GetSessionInfo(string[] sessionNames, int[] sessionDurations, string searchSession, out int index,
+    out int duration)
+{
+     index  = Array.IndexOf(sessionNames, searchSession);
+     if (index != -1)
+     {
+         duration = sessionDurations[index];
+         return true;
+     }
+     else
+     {
+         duration = 0;
+         return false;
+     }
+
+}
+Console.Write("Enter session: ");
+string searchSession=Console.ReadLine()!;
+int index;
+int duration;
+
+var found=GetSessionInfo(sessionNames, sessionDurations, searchSession, out index, out duration);
+if (found)
+{
+    Console.WriteLine($"Index: {index} ");
+    Console.WriteLine($"Duration: {duration} minutes");
+}
+else
+{ Console.WriteLine("Session not found."); }
+
+
+//7.3 Reference Type Without ref
+static void change(int[] x)
+{
+    x[0] = 444;
+    
+}
+
+int [] arrayNumbs= [1,2,3,4];
+Console.WriteLine("array before calling method :");
+for (int i = 0; i < arrayNumbs.Length; i++)
+{
+    Console.Write(arrayNumbs[i]);
+
+    if (i < arrayNumbs.Length - 1)
+    {
+        Console.Write(",");
+    }
+}
+change(arrayNumbs);
+Console.WriteLine("\narray after calling method :");
+for (int i = 0; i < arrayNumbs.Length; i++)
+{
+    Console.Write(arrayNumbs[i]);
+
+    if (i < arrayNumbs.Length - 1)
+    {
+        Console.Write(",");
+    }
+}
+
+
+
+/*Part 8 — params Keyword*/
+
+static int CalculateTotalDuration(params int[] sessionDurations)
+{
+    int result = 0;
+    foreach (var items in sessionDurations )
+    {
+        result += items;
+    }
+
+    return result;
+}
+Console.WriteLine($"\n Total Duration: {CalculateTotalDuration(60, 90, 120, 180, 240)}");
+
+
+
+/*Part 9 — Session Date Details*/
+
+static void DisplaySessionDateDetails(
+    string[] sessionNames,
+    DateTime[] sessionDates,
+    int[] sessionDurations,
+    string searchSession)
+{
+    
+    int index = Array.IndexOf(sessionNames, searchSession);
+
+    if (index == -1)
+    {
+        Console.WriteLine("Session not found.");
+        return;
+    }
+    
+    DateTime date = sessionDates[index];
+
+    Console.WriteLine($"Session: {sessionNames[index]}");
+    Console.WriteLine($"Date: {date.ToString("dd MMMM yyyy", CultureInfo.InvariantCulture)}");
+    Console.WriteLine($"Day: {date.DayOfWeek}");
+    Console.WriteLine($"Year: {date.Year}");
+    Console.WriteLine($"Month: {date.Month}");
+    Console.WriteLine($"Day Number: {date.Day}");
+    Console.WriteLine($"Start Time: {date.ToString("hh:mm tt", CultureInfo.InvariantCulture)}");
+
+    Console.WriteLine($"Duration: {sessionDurations[index]} minutes");
+
+    DateTime endTime = date.AddMinutes(sessionDurations[index]);
+
+    Console.WriteLine($"End Time: {endTime.ToString("hh:mm tt", CultureInfo.InvariantCulture)}");
+}
+
+
+/*Part 10 — Date Difference*/
+static void CalculateDateDifference(string[] sessionNames,  DateTime[] sessionDates, string firstSession, string secondSession)
+{
+    int firstIndex = Array.IndexOf(sessionNames, firstSession);
+    int secondIndex = Array.IndexOf(sessionNames, secondSession);
+    if (firstIndex==-1 || secondIndex== -1)
+    {
+        Console.WriteLine("Session not found.");
+        return;
+    }
+
+    DateTime firstDate = sessionDates[firstIndex];
+    DateTime secondDate = sessionDates[secondIndex];
+
+    TimeSpan difference = secondDate - firstDate;
+}
+
+
+/*Part 11 — Past and Upcoming Sessions*/
+
+static void DisplaySessionStatus(string[] sessionNames, DateTime[] sessionDates)
+{
+    for (int i = 0; i < sessionNames.Length; i++)
+    {
+        if (sessionDates[i]<DateTime.Now)
+        {
+            Console.WriteLine($"{sessionNames[i]} Past ");
+        }
+        else
+        {
+            Console.WriteLine($"{sessionNames[i]} Upcoming ");
+
+        }
+    }
+
+}
+DisplaySessionStatus(sessionNames, sessionDates);
