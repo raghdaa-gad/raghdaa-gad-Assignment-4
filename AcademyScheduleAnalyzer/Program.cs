@@ -1,6 +1,14 @@
 ﻿using System.Globalization;
 using System.Net.Security;
 using System.Text;
+using BenchmarkDotNet.Running;
+using Benchmarks;
+
+if (args.Contains("--benchmark"))
+{
+    BenchmarkRunner.Run<StringBenchmark>();
+    return;
+}
 
 
 /*Part 1 — Starter Data*/
@@ -739,3 +747,4 @@ static string BuildReportUsingStringBuilder1(
 
     return report.ToString();
 }
+
