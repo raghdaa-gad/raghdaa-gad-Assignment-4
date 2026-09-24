@@ -667,4 +667,22 @@ static void AccessSessionByIndex(
 } 
 
 /*Part 17 — Throw an Exception*/             
-                                                                                          
+static void ValidateDuration(int duration)
+{
+    if (duration <= 0)
+    {
+        throw new ArgumentException("Duration must be greater than zero.");
+    }
+}
+Console.Write("Enter duration: ");
+int duratrion = int.Parse(Console.ReadLine()!);
+
+try
+{
+    ValidateDuration(duratrion);
+    Console.WriteLine("Duration accepted.");
+}
+catch (ArgumentException ex)
+{
+    Console.WriteLine(ex.Message);
+}                                                                                 
