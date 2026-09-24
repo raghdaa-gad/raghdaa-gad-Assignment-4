@@ -372,7 +372,7 @@ static DateTime ReadSessionDate()
             return date;
         }
 
-        Console.Write("Invalid date. Try again: ");
+        Console.Write("Invalid date ,Try again: ");
     }
 }
 
@@ -576,3 +576,95 @@ static void DisplaySessionStatus(string[] sessionNames, DateTime[] sessionDates)
 
 }
 DisplaySessionStatus(sessionNames, sessionDates);
+
+/*
+Part 13 — Date Formatting
+ */
+static void DisplayDateFormats(string[] sessionNames, DateTime[] sessionDates, string searchSession)
+{
+    int index = Array.IndexOf(sessionNames, searchSession);
+
+    if (index == -1)
+    {
+        Console.WriteLine("Session not found.");
+        return;
+    }
+
+    DateTime date = sessionDates[index];
+
+    Console.WriteLine(date.ToString("yyyy-MM-dd"));
+    Console.WriteLine(date.ToString("dd/MM/yyyy"));
+    Console.WriteLine(date.ToString("dd MMMM yyyy"));
+    Console.WriteLine(date.ToString("dddd, dd MMMM yyyy"));
+    Console.WriteLine(date.ToString("hh:mm tt"));
+}
+
+/*Part 14 — Read and Validate a Date*/
+static DateTime ReadAndValidateDate()
+{
+    Console.Write("Enter date (yyyy-MM-dd HH:mm): ");
+
+    while (true)
+    {
+      
+        if (DateTime.TryParseExact(
+                Console.ReadLine(),
+                "yyyy-MM-dd HH:mm",
+                CultureInfo.InvariantCulture,
+                DateTimeStyles.None,
+                out DateTime date))
+        {
+            return date;
+        }
+        Console.WriteLine("invalid date");
+    }
+}
+
+
+/*Part 15 — Exception Handling: Menu Input*/
+static int ReadMenuOption()
+{
+    while (true)
+    {
+        try
+        {
+           Console.Write("Choose an option: ");
+           string? input = Console.ReadLine();
+           int num = int.Parse(input);
+           return num;
+        }
+        catch (FormatException)
+        {
+            Console.WriteLine("Invalid menu option. Enter a number.");
+
+        }
+    }
+}
+int n=ReadMenuOption();
+Console.WriteLine($"{n}");
+
+
+
+/*Part 16 — Exception Handling: Invalid Array Index*/
+
+static void AccessSessionByIndex(
+    string[] sessionNames)
+{
+    Console.Write("Enter session index: ");
+    int index = int.Parse(Console.ReadLine()!);
+
+    try
+    {
+        Console.WriteLine($"session :{sessionNames[index]}");
+             
+    }
+    catch (IndexOutOfRangeException)
+    {
+        Console.WriteLine("The selected session index is out of range.\n");
+       
+    }
+   
+} 
+
+/*Part 17 — Throw an Exception*/             
+                                                                                          
