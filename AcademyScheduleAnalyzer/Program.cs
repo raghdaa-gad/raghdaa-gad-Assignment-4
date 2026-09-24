@@ -685,4 +685,57 @@ try
 catch (ArgumentException ex)
 {
     Console.WriteLine(ex.Message);
-}                                                                                 
+}                                 
+
+/*Part 18 — finally*/ 
+static void ReadNumber()
+{
+    try
+    {
+        Console.Write("Enter a number: ");
+        int number = int.Parse(Console.ReadLine()!);
+
+        Console.WriteLine($"You entered: {number}");
+    }
+    catch (FormatException)
+    {
+        Console.WriteLine("Invalid input.");
+    }
+    finally
+    {
+        Console.WriteLine("Input operation finished.");
+    }
+}
+
+/*Part 19 — Build a Schedule Report Using string*/
+
+static string BuildReportUsingString1(string[] sessionNames, DateTime[] sessionDates, int[] sessionDurations)
+{
+    string report = "";
+    for (int i = 0; i < sessionNames.Length; i++)
+    {
+        report+=$"{sessionNames[i]} - "+$"{sessionDates[i]:dd/MM/yyyy hh:mm tt} - "+ $"{sessionDurations[i]} minutes\n";
+    }
+
+    return report;
+}
+
+/* Part 20 — Build the Same Report Using StringBuilder */
+
+static string BuildReportUsingStringBuilder1(
+    string[] sessionNames,
+    DateTime[] sessionDates,
+    int[] sessionDurations)
+{
+    StringBuilder report = new StringBuilder();
+
+    for (int i = 0; i < sessionNames.Length; i++)
+    {
+        report.AppendLine(
+            $"{sessionNames[i]} - " +
+            $"{sessionDates[i]:dd/MM/yyyy hh:mm tt} - " +
+            $"{sessionDurations[i]} minutes");
+    }
+
+    return report.ToString();
+}
