@@ -1,4 +1,13 @@
-1. ref vs out :
-2. ref with reference types:
-3. params keyword:
-4. string vs StringBuilder:
+# LinkedIn Posts
+## 1. ref vs out
+Post URL:
+<>
+## 2. ref with Reference Types
+Post URL:
+<>
+## 3. params Keyword
+Post URL:
+<>
+## 4. string vs StringBuilder
+Post URL:
+<>

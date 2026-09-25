@@ -1,12 +1,28 @@
+# LeetCode Submission Evidence
 
-### LeetCode profile URL:
+## LeetCode Account
 
-1. Valid Anagram
-- Problem URL :
-- Accepted screenshot reference:
+LeetCode Profile:  
+https://leetcode.com/u/raghdaa-gad/
 
-  
+## Valid Anagram
 
-2. Greatest Common Divisor of Strings
-- Problem URL :
-- Accepted screenshot reference :
+Problem: Valid Anagram
+
+Problem URL:  
+https://leetcode.com/problems/valid-anagram/
+
+Accepted Submission:
+
+![Valid Anagram Accepted](./images/valid-anagram-accepted.png)
+
+## Greatest Common Divisor of Strings
+
+Problem: Greatest Common Divisor of Strings
+
+Problem URL:  
+https://leetcode.com/problems/greatest-common-divisor-of-strings/
+
+Accepted Submission:
+
+![Greatest Common Divisor of Strings Accepted](./images/gcd-of-strings-accepted.png)
