@@ -2,7 +2,9 @@ using System.Text;
 using BenchmarkDotNet.Attributes;
 
 namespace Benchmarks;
+
 [MemoryDiagnoser]
+[ShortRunJob]
 public class StringBenchmark
 {
     [Params(100, 1000, 10000, 100000)]
@@ -18,7 +20,7 @@ public class StringBenchmark
             text += "Hello";
         }
     }
-    
+
     [Benchmark]
     public void StringBuilderConcatenation()
     {
