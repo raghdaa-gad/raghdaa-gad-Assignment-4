@@ -1,6 +1,6 @@
 ## Benchmark Results
 
-![Benchmark Results](./images/benchmark-results.png)
+![Benchmark Results](./LeetCode/images/benchmark-results.png)
 
 
 ### 1. Which approach was faster with 100 iterations?
