@@ -7,7 +7,7 @@ Post URL:
 <https://lnkd.in/p/eYMJKcy5>
 ## 3. params Keyword
 Post URL:
-<>
+<https://lnkd.in/p/eqkZxe7Q>
 ## 4. string vs StringBuilder
 Post URL:
 <https://lnkd.in/p/eWRSHp9P>
